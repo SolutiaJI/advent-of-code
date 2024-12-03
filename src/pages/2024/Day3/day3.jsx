@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
 function Day3() {
-  const [inputValue, setInputValue] = useState(
-    "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
-  );
+  const [inputValue, setInputValue] = useState("");
   const [answer1, setAnswer1] = useState(0);
   const [answer2, setAnswer2] = useState(0);
 
