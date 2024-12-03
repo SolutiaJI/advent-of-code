@@ -3,21 +3,32 @@ import snowflake from "./snowflake.png";
 import womp from "./womp-womp-conan.gif";
 import "./App.css";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
-import Day1 from "./pages/Day1/day1";
-import Day2 from "./pages/Day2/day2";
-import Day3 from "./pages/Day3/day3";
+import Day1_2023 from "./pages/2023/Day1/day1";
+import Day2_2023 from "./pages/2023/Day2/day2";
+import Day3_2023 from "./pages/2023/Day3/day3";
+import Day1 from "./pages/2024/Day1/day1";
+import Day2 from "./pages/2024/Day2/day2";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Advent of Code 2023</h1>
+        <h1>Advent of Code</h1>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="day1" element={<Day1 />} />
             <Route path="day2" element={<Day2 />} />
-            <Route path="day3" element={<Day3 />} />
+            <Route
+              path="2023"
+              element={
+                <PastLayout year={2023} days={["day1", "day2", "day3"]} />
+              }
+            >
+              <Route path="day1" element={<Day1_2023 />} />
+              <Route path="day2" element={<Day2_2023 />} />
+              <Route path="day3" element={<Day3_2023 />} />
+            </Route>
             <Route path="*" element={<NoMatch />} />
           </Route>
         </Routes>
@@ -40,11 +51,24 @@ const Layout = () => {
             <Link to="/day2">Day 2</Link>
           </li>
           <li>
-            <Link to="/day3">Day 3</Link>
+            <Link to="/2023/">2023</Link>
           </li>
         </ul>
       </nav>
 
+      <Outlet />
+    </>
+  );
+};
+
+const PastLayout = ({ year, days }) => {
+  return (
+    <>
+      <h2>{year}</h2>
+      <Link to="/">return to present year</Link>
+      {days?.map((day) => {
+        return <Link to={`/${year}/${day}`}>Day {day?.split("day")[1]}</Link>;
+      })}
       <Outlet />
     </>
   );
