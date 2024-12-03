@@ -8,6 +8,7 @@ import Day2_2023 from "./pages/2023/Day2/day2";
 import Day3_2023 from "./pages/2023/Day3/day3";
 import Day1 from "./pages/2024/Day1/day1";
 import Day2 from "./pages/2024/Day2/day2";
+import Day3 from "./pages/2024/Day3/day3";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="day1" element={<Day1 />} />
             <Route path="day2" element={<Day2 />} />
+            <Route path="day3" element={<Day3 />} />
             <Route
               path="2023"
               element={
@@ -49,6 +51,9 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/day2">Day 2</Link>
+          </li>
+          <li>
+            <Link to="/day3">Day 3</Link>
           </li>
           <li>
             <Link to="/2023/">2023</Link>
